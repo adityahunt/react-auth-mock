@@ -7,7 +7,7 @@ interface ProtectedRouteProps {
   children: React.ReactNode; // Standard prop name for component children
 }
 
-function ProtectedRoute({ children }: ProtectedRouteProps): JSX.Element {
+function ProtectedRoute({ children }: ProtectedRouteProps): React.ReactElement {
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
 
   if (!isAuthenticated) {
