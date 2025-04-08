@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'; // Added useEffect for potential redirect logic
+import { useEffect } from 'react'; // Added useEffect for potential redirect logic
 import { useNavigate } from 'react-router-dom'; // Added Navigate
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { logout, selectCurrentUser, selectIsAuthenticated } from '../store/features/auth/authSlice';

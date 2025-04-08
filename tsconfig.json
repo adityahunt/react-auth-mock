@@ -3,5 +3,26 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+    "compilerOptions": {
+      // ... other options ...
+  
+      "jsx": "react-jsx", // <<<<< ENSURE THIS LINE EXISTS AND IS SET TO "react-jsx"
+  
+      // ... other potentially relevant options (defaults from Vite are usually good) ...
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "lib": ["ESNext", "DOM", "DOM.Iterable"],
+      "module": "ESNext",
+      "skipLibCheck": true,
+      "moduleResolution": "bundler",
+      "allowImportingTsExtensions": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": true, // This is often true for Vite projects as Vite handles emission
+      "strict": true,
+      "noUnusedLocals": true, // Flags unused variables (like the React import)
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true
+    },
 }

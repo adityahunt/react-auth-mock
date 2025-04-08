@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { JSX } from 'react';
 interface LayoutProps {
   children: React.ReactNode;
 }
