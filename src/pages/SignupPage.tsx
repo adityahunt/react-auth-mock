@@ -9,7 +9,6 @@ interface StoredUserCredentials {
 
 const USERS_STORAGE_KEY = "registeredUsers";
 
-//handle signup
 function SignupPage(){
   console.log('Hello from SignupPage component!');
   const navigate = useNavigate();
@@ -20,7 +19,6 @@ function SignupPage(){
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
-  //function to load existing users from local storage
   const getStoredUsers=():StoredUserCredentials[]=>{
     const storedUsersString=localStorage.getItem(USERS_STORAGE_KEY);
     if(storedUsersString){
@@ -35,12 +33,10 @@ function SignupPage(){
     return [];
   };
 
-  //handle form submission
   const handleSignup=(event:React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
     setError('');
     setSuccessMessage('');
-  //basic validation
   if(!name || !email || !password || !confirmPassword){
     setError('All fields are required');
     return;
@@ -49,19 +45,14 @@ function SignupPage(){
     setError('Passwords do not match');
     return;
   }
-  //add email validation if required
-
-  //check if user already exists
   const storedUsers = getStoredUsers();
   const userExists = storedUsers.some(user => user.email === email);
   if(userExists){
     setError('An account with this email already exists');
     return;
   }
-  //create new user
   const newUser: StoredUserCredentials = { email, password, name };
 
-  //add new user to and save to local storage
   const updatedUsers = [...storedUsers, newUser];
   try{
     localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(updatedUsers));
